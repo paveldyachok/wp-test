@@ -908,7 +908,7 @@
       });
     </script>
     <!-- Маска -->
-    <script src="js/jquery.maskedinput.min.js"></script>
+    <!-- <script src="js/jquery.maskedinput.min.js"></script> -->
     <script>
       jQuery(function($){
          $("#phone-1").mask("+7 (999) 999-9999");
@@ -918,7 +918,7 @@
       });
     </script>
     <!-- Слайдер -->
-    <script src="js/slick.min.js"></script>
+    <!-- <script src="js/slick.min.js"></script> -->
     <script>
       $(document).ready(function(){
         $('.slider_ex').slick({
@@ -1021,7 +1021,7 @@
         });
       });
     </script>
-    <script src="js/jquery.slicknav.min.js"></script>
+    <!-- <script src="js/jquery.slicknav.min.js"></script> -->
     <script>
       $(function(){
         $('#menu').slicknav({
@@ -1030,8 +1030,8 @@
         });
       });
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
 </html>

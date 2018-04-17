@@ -1,9 +1,10 @@
 <?php
 
 // правильный способ подключить стили и скрипты
-add_action('wp_enqueue_scripts', 'theme_name_styles');
+add_action('wp_enqueue_scripts', 'arkada_styles');
+add_action( 'wp_enqueue_scripts', 'arkada_scrips' );
 
-function theme_name_styles()
+function arkada_styles()
 {
     wp_enqueue_style('animate-style', get_template_directory_uri() . '/assets/css/animate.css');
     wp_enqueue_style('bootstrap-style', get_template_directory_uri() . '/assets/css/bootstrap.css');
@@ -13,9 +14,14 @@ function theme_name_styles()
     wp_enqueue_style('main-style', get_stylesheet_uri());
 }
 
-function wp_enqueue_scripts()
-{
+function arkada_scrips(){
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js');
+    wp_enqueue_script( 'jquery' );
     
+    wp_enqueue_script('maskedinput', get_template_directory_uri() . "/assets/js/jquery.maskedinput.min.js", array('jquery'), null, true);
+    wp_enqueue_script('slick', get_template_directory_uri() . "/assets/js/slick.min.js", array('jquery'), null, true);
+    wp_enqueue_script('slicknav', get_template_directory_uri() . "/assets/js/jquery.slicknav.min.js", array('jquery'), null, true);
+    wp_enqueue_script('bootstrap', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", array('jquery'), null, true);
+    wp_enqueue_script('ie10-viewport-bug-workaround', "http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js", array('jquery'), null, true);
 }
-
-function wp_enqueue_scripts()
