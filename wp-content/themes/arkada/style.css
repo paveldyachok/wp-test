@@ -205,9 +205,9 @@ textarea:focus {
 /* Главный экран */
 
 .main {
-    padding-top: 7rem;
+    /* padding-top: 7rem;
     background: #ffffff url(assets/img/main/main-bg.jpg) center no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 .main h1 {

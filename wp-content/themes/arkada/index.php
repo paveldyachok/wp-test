@@ -9,18 +9,21 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>Каркасные и кирпичные дома</title>
+    <title><?php bloginfo('name');
+          echo (' | ');
+          bloginfo('description'); ?></title>
         
     <?php wp_head(); ?>
     
   </head>
 
   <body>
-    <nav class="header" style="display: none;">
+    <nav class="header" style="display: unset;">
       <div class="container">
         <div class="row">
           <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-            <img src="<?php bloginfo('template_url'); ?> /assets/img/main/logo.png" alt="Arkada. Строительство и монтаж">
+            <?php the_custom_logo($blog_id); ?>
+            <!-- <img src="<?php // bloginfo('template_url'); ?>/assets/img/main/logo.png" alt="Arkada. Строительство и монтаж"> -->
           </div>
           <div class="col-lg-5 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-0 col-sm-offset-0" id="menu-div">
             <div class="wrap">
@@ -50,12 +53,16 @@
       </div>
     </nav>
 
-    <main class="main">
+    <main class="main" style="
+      padding-top: 7rem;
+      background: #ffffff url(<?php the_field('main_image'); ?>) center no-repeat;
+      background-size: cover;
+    ">
       <div class="container">
         <div class="row">
           <div class="col-md-5 col-md-offset-1">
-            <h1>Каркасные<br>и кирпичные дома</h1>
-            <h2>под ключ с гарантией</h2>
+            <h1><?php the_field('main_title'); ?></h1>
+            <h2><?php the_field('main_subtitle'); ?></h2>
             <div class="main-feature">
               <img src="<?php bloginfo('template_url'); ?> /assets/img/main/icon-1@1x.png" alt="piggy">
               <p class="main-feature-p">Цены на 20%<br>ниже конкурентов</p>
@@ -152,89 +159,44 @@
           <li><a href="#shop" id="a-4">Кирпичные дома</a></li>
           <li><a href="#shop" id="a-5">Дома из блоков</a></li>
         </ul>
-        <!-- Дома из блоков -->
-        <div class="shop-cards" id="shop-cards-5">
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/1.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+
+        
+
+          <!-- Дома из блоков -->
+          <div class="shop-cards" id="shop-cards-5">
+          <?php
+        // параметры по умолчанию
+          $args = array(
+            'category_name' => 'lumber',
+            'order' => 'DESC',
+            'post_type' => 'post',
+            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+          );
+
+          $posts = get_posts($args);
+
+          foreach ($posts as $post) {
+            setup_postdata($post); // формат вывода
+            ?>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="shop-card">
+                <?php the_post_thumbnail(); ?>
+                <h3><?php the_title(); ?></h3>
+                <p>Площадь <?php the_field('area'); ?> м<sup>2</sup></p>
+                <span><?php the_field('old_price'); ?></span>
+                <b><?php the_field('new_price'); ?> руб.</b>
+                <button type="submit" class="popup-btn button-small">Оставить заявку</button>
+              </div>
             </div>
+            <?php
+
+          }
+
+          wp_reset_postdata(); // сброс
+          ?>
           </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/2.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/3.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/4.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/5.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/6.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/7.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="shop-card">
-              <img src="<?php bloginfo('template_url'); ?> /assets/img/shop/5/8.jpg" alt="">
-              <h3>Дом из блоков D-123</h3>
-              <p>Площадь 59.86 м<sup>2</sup></p>
-              <span>614 000</span>
-              <b>453 820 руб.</b>
-              <button type="submit" class="popup-btn button-small">Оставить заявку</button>
-            </div>
-          </div>
-        </div>
+          
+          
 
         <!-- Кирпичные дома -->
         <div class="shop-cards" id="shop-cards-4">

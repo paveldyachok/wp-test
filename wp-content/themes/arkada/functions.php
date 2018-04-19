@@ -25,3 +25,6 @@ function arkada_scrips(){
     wp_enqueue_script('bootstrap', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", array('jquery'), null, true);
     wp_enqueue_script('ie10-viewport-bug-workaround', "http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js", array('jquery'), null, true);
 }
+
+add_theme_support('custom-logo');
+add_theme_support('post-thumbnails');
